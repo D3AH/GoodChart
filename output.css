@@ -7571,12 +7571,13 @@ video {
   border-radius: 0.5rem;
 }
 
-div.node div.title {
+.orgchart .node .title {
   border-color: #63b3ed;
   border-top-width: 4px;
   background-color: #fff;
   color: #1a202c;
   font-weight: 600;
+  height: 2rem;
 }
 
 div.node div.content {

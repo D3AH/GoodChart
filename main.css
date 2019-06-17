@@ -17,8 +17,8 @@
     @apply text-base shadow-md border-0 mx-1 p-0 overflow-hidden bg-white rounded-lg;
 }
 
-div.node div.title {
-    @apply border-blue-400 border-t-4 bg-white text-gray-900 font-semibold;
+.orgchart .node .title {
+    @apply border-blue-400 border-t-4 bg-white text-gray-900 font-semibold h-8;
 }
 
 div.node div.content {
