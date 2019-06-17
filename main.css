@@ -1,0 +1,46 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.orgchart .node {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 3px;
+    border: 2px dashed transparent;
+    text-align: center;
+    width: 130px;
+
+    @apply text-base shadow-md border-0 mx-1 p-0 overflow-hidden bg-white rounded-lg;
+}
+
+div.node div.title {
+    @apply border-blue-400 border-t-4 bg-white text-gray-900 font-semibold;
+}
+
+div.node div.content {
+    @apply bg-white;
+}
+
+.orgchart .lines .topLine {
+  border-top: 4px solid;
+  @apply border-t-8 border-blue-200;
+}
+
+.orgchart .lines .rightLine {
+  border-right: 4px solid;
+  @apply border-r-4 border-blue-200;
+}
+
+.orgchart .lines .leftLine {
+  border-left: 4px solid;
+  @apply border-l-4 border-blue-200;
+}
+
+.orgchart .lines .downLine {
+  @apply bg-blue-200;
+  width: 8px;
+}

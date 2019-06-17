@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./jquery.orgchart.min.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="bg-gray-200">
+    <div id="chart"></div>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="./jquery.orgchart.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+    
+        var datasource = {
+          'name': 'Lao Lao',
+          'title': 'general manager',
+          'children': [
+            { 'name': 'Bo Miao', 'title': 'department manager' },
+            { 'name': 'Su Miao', 'title': 'department manager',
+              'children': [
+                { 'name': 'Tie Hua', 'title': 'senior engineer' },
+                { 'name': 'Hei Hei', 'title': 'senior engineer',
+                  'children': [
+                    { 'name': 'Dan Dan', 'title': 'engineer' }
+                  ]
+                },
+                { 'name': 'Pang Pang', 'title': 'senior engineer' }
+              ]
+            },
+            { 'name': 'Hong Miao', 'title': 'department manager' }
+          ]
+        };
+    
+        var oc = $('#chart').orgchart({
+            'data' : datasource,
+            'nodeContent': 'title',
+            'draggable': true,
+            'dropCriteria': function($draggedNode, $dragZone, $dropZone) {
+                if($draggedNode.find('.content').text().indexOf('manager') > -1 && $dropZone.find('.content').text().indexOf('engineer') > -1) {
+                return false;
+                }
+                return true;
+            },
+        });
+
+        oc.$chart.on('nodedrop.orgchart', function(event, extraParams) {
+            console.log('draggedNode:' + extraParams.draggedNode.children('.title').text()
+                + ', dragZone:' + extraParams.dragZone.children('.title').text()
+                + ', dropZone:' + extraParams.dropZone.children('.title').text()
+            );
+        });
+    
+      });
+    </script>
+</body>
+</html>
